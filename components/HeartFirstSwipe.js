@@ -1,21 +1,37 @@
+//component formated with word wrap for compactness
+"use strict"
+// Defines that JavaScript code should be executed in "strict mode"
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
 import assets from "../assets.js";
 import LocalImageSymbol from "./LocalImageSymbol";
 import { TextWithLetterSpacing } from "./TextWithLetterSpacing";
+//Import all components, assests, and packages used on this file
 
 const HeartFirstSwipe = () => {
+	// create function that returns components 
+
 	const data = assets.chakraData.heart;
+	// create variable data with value assets.chakraData.heart
+
 		const { imageView, viewStyle, textStyle, labelStyle, labelView } = styles;
+    //deconstructs respective values from styles
+
 	return (
 		<View style={viewStyle}>
 			<View style={labelView}>
+			{/*
+		create View component to contain inner components with respective style props
+	*/}
 				<TextWithLetterSpacing spacing={15} textStyle={labelStyle}>
 					Ask
 				</TextWithLetterSpacing>
 				<TextWithLetterSpacing spacing={15} textStyle={labelStyle}>
 					Yourself
 				</TextWithLetterSpacing>
+					{/*
+		create View and TextWithLetterSpacing component to emulate word padding with respective style props
+	*/}
 			</View>
 			<Text style={textStyle}>{data.askSelf}</Text>
 			<View style={imageView}>
@@ -24,11 +40,15 @@ const HeartFirstSwipe = () => {
 					originalHeight={6034}
 					source={require("../images/heart.png")}
 				/>
+				{/*
+				create Text, View, and LocalImageSymbol component to label, contain, and display respective chakra symbol
+			*/}
 			</View>
 		</View>
 	);
 };
 export default HeartFirstSwipe;
+//exports component to be used outside this file
 
 const styles = StyleSheet.create({
 	textStyle: {
@@ -57,3 +77,4 @@ const styles = StyleSheet.create({
 		alignItems:'center'
 	}
 });
+//Creates styles variable through StyleSheet.create to reduce the strain on the bridge

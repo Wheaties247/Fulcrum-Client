@@ -1,3 +1,4 @@
+//UNUSED COMPONENT
 import { Platform, StyleSheet, Text, View, TextInput, Button, TouchableOpacity } from "react-native";
 import React, { Component } from "react";
 

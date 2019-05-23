@@ -1,20 +1,35 @@
+
+//component formated with word wrap for compactness
+"use strict"
+// Defines that JavaScript code should be executed in "strict mode"
 import React, { Component } from "react";
 import { Text, View, ScrollView } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 
 import Chakra from "./Chakra";
+//Import all components, assests, and packages used on this file
 
 class Results extends Component {
+	// create function that returns components 
+
 	constructor(props) {
 		super(props);
 		this.state = {
 			// balanceThese: ["crown", "heart", "throat", 'sacral', 'root', 'power', 'third']
 			balanceThese: []
 		};
+    // creates state for component
+
 		this.showChakra = this.showChakra.bind(this);
 		this.getBackgroundColor = this.getBackgroundColor.bind(this);
+		   /*  Binds above methods so any instances of the word "this" 
+    within each method refers to the current component even 
+  if it is called by another component*/
 	}
 	getBackgroundColor(chakra) {
+		/*
+getBackgroundColor takes one parameter and returns an object concordance with a switch statement in order to style respective components where it is called
+		*/
 		switch (chakra) {
 			case "crown":
 				return {
@@ -131,6 +146,10 @@ class Results extends Component {
 		}
 	}
 	showChakra(event) {
+		/*
+		showChakra method takes one argument and through a concordant switch statement returns two function calls through props of the App component;
+		the passData method sets the showChakra state property to the value of the respective switch statement case and alters the App componets current veiw to the Show component
+		*/
 		console.log("Current Cata", event);
 		const currentCatagory = event;
 		const { alterCurrentView, passData } = this.props;
@@ -159,16 +178,23 @@ class Results extends Component {
 		}
 		// this.props.alterCurrentView('Show',)
 	}
-
+	
 	render() {
 		console.log(this.props);
 		// const results = this.renderChakras();
 		const { viewStyle, textStyle, titleStyle, scrollStyle } = styles;
 		const { balanceThese } = this.props;
+    //deconstructs respective values from variables
 		
 		return (
 			<LinearGradient colors={['rgb(154,  88, 19)', 'rgb( 238, 140, 12)']} style={scrollStyle}>
+			{/*
+		create LinearGradient component with respective style props to emulate color gradient
+	*/}
 				<ScrollView>
+			{/*
+			create ScrollView component with respective style prop to scroll through the following components
+		*/}
 					{balanceThese.includes("crown")?
 					(<Chakra
 						getBackgroundColor={this.getBackgroundColor}
@@ -246,6 +272,9 @@ class Results extends Component {
 					</Chakra>) :
 					null
 					}
+				{/*
+				create seven ternary operators to render a Chakra component based on the contents of the balanceThese array or to render nothing
+				*/}
 				</ScrollView>
 			</LinearGradient>
 		);
@@ -253,6 +282,7 @@ class Results extends Component {
 }
 
 export default Results;
+//exports component to be used outside this file
 
 const styles = {
 	textStyle: {
@@ -277,3 +307,5 @@ const styles = {
 		width: "100%"
 	}
 };
+//Creates styles variable through StyleSheet.create to reduce the strain on the bridge
+

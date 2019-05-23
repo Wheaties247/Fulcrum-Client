@@ -1,30 +1,53 @@
+//component formated with word wrap for compactness
+"use strict"
+// Defines that JavaScript code should be executed in "strict mode"
+
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View, Image } from "react-native";
 import assets from '../assets.js';
 import NavButton from './NavButton';
 import LinearGradient from 'react-native-linear-gradient';
 import PowerSwiper from './PowerSwiper';
+//Import all components, assests, and packages used on this file
 
 
 class PowerInfo extends Component{
+  //initialize component
+
 	constructor(props){
 		super(props);
 		this.state = {}
+    //initialize constructor with props from React.Component
+
 	}
 	render(){
 		const data = assets.chakraData.power;
+	// create variable data with value assets.chakraData.power
+
 		const {titleViewStyle, askSelfStyle, navStyle, nameStyle, infoHeader, scrollStyle, scrollText, navView, imgStyle,
 		linearGradient} = styles;
 		const {previousView} = this.props
+    //deconstructs respective values from respective variables
 		
 		return(
 			<LinearGradient 
 				colors={["rgb(213, 225, 0)", "rgb(224, 230, 33)"]} 
 				 style ={linearGradient}
 				 >
+				 	 {/* 
+		    LinearGradient component takes an array of rgb values to create a gradient from one color to the next with respective style prop passed in
+		    */}
 				<View style = {navStyle} >
+				{/*
+				within a View component with respective style property
+			*/}
 				 	<View style = {navView}>
 						<NavButton handleAction={()=>this.props.alterCurrentView(previousView)} />	
+						{/*
+					within a View component with respective style property
+					create a NavButton with handleAction prop that calls
+					alterCurrentView method with previousView argument 
+					*/}
 					</View>
 					
 					<Text style ={nameStyle}>
@@ -35,7 +58,14 @@ class PowerInfo extends Component{
 					source ={require('../images/locationPower.png')}
 					/>
 				</View>
+				{
+						/*
+						create Text component with data.name as the name for the chakra info
+						and an Image component with locationCrown.png as its source
+						*/
+					}
 				 <PowerSwiper />				
+				{/*create PowerSwiper*/}
 				
 			</LinearGradient>
 			)
@@ -43,6 +73,7 @@ class PowerInfo extends Component{
 }
 
 export default PowerInfo;
+//exports component to be used outside this file
 
 
 const styles = StyleSheet.create({
@@ -93,3 +124,4 @@ const styles = StyleSheet.create({
 		height:60
 	}
 })
+//Creates styles variable through StyleSheet.create to reduce the strain on the bridge

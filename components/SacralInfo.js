@@ -1,30 +1,49 @@
+//component formated with word wrap for compactness
+"use strict"
+// Defines that JavaScript code should be executed in "strict mode"
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View, Image } from "react-native";
 import assets from '../assets.js';
 import NavButton from './NavButton';
 import LinearGradient from 'react-native-linear-gradient';
 import SacralSwiper from './SacralSwiper';
+//Import all components, assests, and packages used on this file
 
 
 class SacralInfo extends Component{
+  //initialize component
+
 	constructor(props){
 		super(props);
+    //initialize constructor with props from React.Component
+
 		this.state = {}
 	}
 	render(){
 		const data = assets.chakraData.sacral;
+	// create variable data with value assets.chakraData.sacral
+
 		const {titleViewStyle, askSelfStyle, navStyle, nameStyle, infoHeader, scrollStyle, scrollText, navView, imgStyle,
 		linearGradient} = styles;
 		const {previousView} = this.props
+    //deconstructs respective values from respective variables
 		
 		return(
 			<LinearGradient 
 				colors={["rgb(248, 181, 63)", "rgb(245, 187, 88)"]} 
 				 style ={linearGradient}
 				 >
+				 {/* 
+		    LinearGradient component takes an array of rgb values to create a gradient from one color to the next with respective style prop passed in
+		    */}
 				<View style = {navStyle} >
 				 	<View style = {navView}>
 						<NavButton handleAction={()=>this.props.alterCurrentView(previousView)} />	
+						{/*
+					within a View component with respective style property
+					create a NavButton with handleAction prop that calls
+					alterCurrentView method with previousView argument 
+					*/}
 					</View>
 					
 					<Text style ={nameStyle}>
@@ -36,6 +55,7 @@ class SacralInfo extends Component{
 					/>
 				</View>
 				 <SacralSwiper />				
+				{/*create SacralSwiper*/}
 				
 			</LinearGradient>
 			)
@@ -43,6 +63,7 @@ class SacralInfo extends Component{
 }
 
 export default SacralInfo;
+//exports component to be used outside this file
 
 const styles = StyleSheet.create({
 	linearGradient:{
@@ -92,3 +113,4 @@ const styles = StyleSheet.create({
 		height:60
 	}
 })
+//Creates styles variable through StyleSheet.create to reduce the strain on the bridge

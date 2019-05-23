@@ -1,17 +1,34 @@
+//component formated with word wrap for compactness
+"use strict"
+// Defines that JavaScript code should be executed in "strict mode"
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import assets from "../assets.js";
 import LocalImage from "./LocalImage";
 import { TextWithLetterSpacing } from "./TextWithLetterSpacing";
 import Container from "./Container";
+//Import all components, assests, and packages used on this file
 
 const CrownThirdSwipe = () => {
+	// create function that returns components 
+
 	const data = assets.chakraData.crown;
+	// create variable data with value assets.chakraData.crown
+
 	const { imageStyle, scrollStyle, titleViewStyle, nameStyle, sypmStyle, labelStyle, viewStyle } = styles;
+    //deconstructs respective values from styles
+	
 	return (
 		<ScrollView style={scrollStyle}>
+		{/*
+				create ScrollView Component with respective style prop 
+				to scroll through the following components
+		*/}
 			<View style = {viewStyle}>
 			<Container>
+			{/*
+				create Container component to style around inner components  
+				*/}
 					<LocalImage
 					source={require("../images/dictionary.png")}
 					originalWidth={400}
@@ -23,6 +40,9 @@ const CrownThirdSwipe = () => {
 						Chakra Info
 					</TextWithLetterSpacing>
 					<Text style ={sypmStyle}>{data.metaInfo}</Text>
+					{/*
+					create TextWithLetterSpacing and LocalImage component to label and display image for "Chakra info" section
+					*/}
 				</Container>
 			</View>
 
@@ -30,6 +50,7 @@ const CrownThirdSwipe = () => {
 	);
 };
 export default CrownThirdSwipe;
+//exports component to be used outside this file
 
 const styles = StyleSheet.create({
 	
@@ -62,3 +83,4 @@ const styles = StyleSheet.create({
 		fontWeight: "800"
 	}
 });
+//Creates styles variable through StyleSheet.create to reduce the strain on the bridge

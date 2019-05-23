@@ -1,3 +1,6 @@
+//component formated with word wrap for compactness
+"use strict"
+// Defines that JavaScript code should be executed in "strict mode"
 import React, { Component } from "react";
 import {
 	Platform,
@@ -11,9 +14,14 @@ import assets from "../assets.js";
 import LocalImage from "./LocalImage";
 import { TextWithLetterSpacing } from "./TextWithLetterSpacing";
 import Container from "./Container";
+//Import all components, assests, and packages used on this file
 
 const RootSecondSwipe = () => {
+	// create function that returns components 
+
 	const data = assets.chakraData.root;
+	//create variable crownData with value of assets.chakraData.crown;
+
 	const {
 		titleViewStyle,
 		nameStyle,
@@ -21,10 +29,19 @@ const RootSecondSwipe = () => {
 		scrollStyle,
 		labelStyle
 	} = styles;
+    	//deconstructs respective values from respective variables
+
 	return (
 		<View>
 			<ScrollView style={scrollStyle}>
+			{/*
+				within View component
+			create ScrollView Component with respective style prop to scroll through the following components
+		*/}
 				<Container>
+				{/*
+				create Container component to style around inner components  
+				*/}
 					<LocalImage
 						source={require("../images/location.png")}
 						originalWidth={320}
@@ -35,6 +52,9 @@ const RootSecondSwipe = () => {
 					</TextWithLetterSpacing>
 
 					<Text style={sypmStyle}>{data.location}</Text>
+					{/*
+					create TextWithLetterSpacing, LocalImage, and Text  component to label display image and discribe info for "Location" section
+					*/}
 				<Container>
 				</Container>
 					<LocalImage
@@ -46,11 +66,18 @@ const RootSecondSwipe = () => {
 					<TextWithLetterSpacing textStyle={labelStyle} spacing={15}>
 						Supports:
 					</TextWithLetterSpacing>
+					{/*
+					create TextWithLetterSpacing and LocalImage component to label and display image for "Location" section
+					*/}
 					{data.connections.map((entry, i) => (
 						<Text key={i} style={sypmStyle}>
 							{i + 1}) {entry}
 						</Text>
 					))}
+	{/*
+							for each entry in crownData.connections array 
+							create Text component and places entry between them
+						*/}
 				</Container>
 				<Container>
 					<LocalImage
@@ -68,11 +95,18 @@ const RootSecondSwipe = () => {
 					<TextWithLetterSpacing textStyle={labelStyle} spacing={15}>
 						Traits:
 					</TextWithLetterSpacing>
+					{/*
+					create TextWithLetterSpacing and LocalImage component to label and display image for "Mental Imblance Traits" section
+					*/}
 					{data.mentalSymptoms.map((symp, i) => (
 						<Text style={sypmStyle} key={i}>
 							{i + 1}) {symp}
 						</Text>
 					))}
+{/*
+							for each symp in crownData.mentalSymptoms array 
+							create Text component and places symp between them
+						*/}
 				</Container>
 				<Container>
 					<LocalImage
@@ -90,17 +124,25 @@ const RootSecondSwipe = () => {
 					<TextWithLetterSpacing textStyle={labelStyle} spacing={15}>
 						Traits:
 					</TextWithLetterSpacing>
+					{/*
+					create TextWithLetterSpacing and LocalImage component to label and display image for "Physical Imbalance Traits" section
+					*/}
 					{data.physicalSymptoms.map((symp, i) => (
 						<Text style={sypmStyle} key={i}>
 							{i + 1}) {symp}
 						</Text>
 					))}
+{/*
+							for each symp in crownData.physicalSymptoms array 
+							create Text component and places symp between them
+						*/}
 				</Container>
 			</ScrollView>
 		</View>
 	);
 };
 export default RootSecondSwipe;
+//exports component to be used outside this file
 
 const styles = StyleSheet.create({
 	titleViewStyle: {
@@ -133,3 +175,5 @@ const styles = StyleSheet.create({
 		width: "100%"
 	}
 });
+//Creates styles variable through StyleSheet.create to reduce the strain on the bridge
+

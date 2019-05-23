@@ -1,3 +1,6 @@
+//component formated with word wrap for compactness
+"use strict"
+// Defines that JavaScript code should be executed in "strict mode"
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -11,6 +14,7 @@ import HeartFirstSwipe from './HeartFirstSwipe';
 import HeartSecondSwipe from './HeartSecondSwipe';
 import HeartThirdSwipe from './HeartThirdSwipe';
 import HeartFourthSwipe from './HeartFourthSwipe';
+//Import all components, assests, and packages used on this file
 
 
 const styles = StyleSheet.create({
@@ -24,9 +28,13 @@ const styles = StyleSheet.create({
     // backgroundColor: "rgb(186, 188, 188)"
   }
 })
+//Creates styles variable through StyleSheet.create to reduce the strain on the bridge
 
 class HeartSwiper extends Component {
+  //initialize component
+
   render(){
+    //Within render
 
     const {slide1} = styles;
     return (
@@ -42,6 +50,10 @@ class HeartSwiper extends Component {
         </View>
          <View style={slide1}>
           <HeartFourthSwipe />
+          {/*
+        create Swiper and respective crown components to finger swipe
+        through each component
+        */}
         </View>
       </Swiper>
     );
@@ -49,3 +61,4 @@ class HeartSwiper extends Component {
 }
 
 export default HeartSwiper;
+//exports component to be used outside this file

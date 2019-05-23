@@ -1,3 +1,5 @@
+//Default swipe cards component for used to create Selection component used inside app
+
 'use strict';
 
 import React, { Component } from 'react';

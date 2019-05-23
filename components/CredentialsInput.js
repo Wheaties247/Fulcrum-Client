@@ -1,27 +1,46 @@
+//component formated with word wrap for compactness
+"use strict"
+// Defines that JavaScript code should be executed in "strict mode"
 import { Platform, StyleSheet, Text, View, TextInput, Button, TouchableOpacity } from "react-native";
 import React, { Component } from "react";
 import LinearGradient from 'react-native-linear-gradient';
 import { TextWithLetterSpacing } from './TextWithLetterSpacing';
+//Import all components, assests, and packages used on this file
+
 
 class CredentialsInput extends Component{
+  //initialize component
+
 	constructor(props){
+    //initialize constructor with props from React.Component
+
 		super(props);
 		this.state = {
 			username: null,
 			password: null,
 			passwordConfirm: null
 		}
+    // creates state for component
+
 	}
 
 	render(){
 		const {buttonViewStyle, viewStyle, inputStyle, inputViewStyle, buttonStyle, buttonTextStyle, linearGradient, touchableStyle} = styles;
+    //deconstructs respective values from styles
+
 		return(
 			<View 
 			style = {viewStyle}
 			>
+		{/*
+			create View Component with respective style prop to contain following components
+		*/}
 				<View 
 				style = {inputViewStyle}
 				>
+			{/*
+				create View Component with respective style prop to contain following components
+			*/}
 					<TextInput 
 					style = {inputStyle}
 					placeholder = 'Username' 
@@ -35,7 +54,9 @@ class CredentialsInput extends Component{
 					type ='password'
 					onChangeText={(text) => this.setState({password:text})}
 					/>	
-
+				{/*
+					create TextInput for username and password entry with onChangeText prop to copy the content of the feild into the respective properties in state whenever there is a change made to the feild
+				*/}
 					{this.props.passwordConfirm ? 
 						<TextInput 
 							style = {inputStyle}
@@ -56,9 +77,15 @@ class CredentialsInput extends Component{
 							placeholder = 'Confirm E-mail' 
 							onChangeText={(text) => this.setState({emailConfirm:text})}
 							/> : null}
+						{/*
+						create ternary operator on this.props.passwordConfirm statement to render three textInput components if true and nothing if false
+						*/}
 						<Text> 
 					{this.props.errorMessage? this.props.errorText: null}
 						</Text>
+						{/*
+						create ternary operator on this.props.errorMessage statement to render this.props.errorText if true and nothing if false
+						*/}
 					{!this.props.passwordConfirm ? 
 					<TouchableOpacity
 					onPress={()=>this.props.forgotCreds()}
@@ -68,15 +95,27 @@ class CredentialsInput extends Component{
 								spacing={5}
 								>
 								Forgot credentials?
+								{/*
+						create TouchableOpacity and TextWithLetterSpacing component with onPress prop that calls this.props.forgotCreds from UserRegister component to toggle show ForgotCreds component or not
+						*/}
 						</TextWithLetterSpacing>
 					</TouchableOpacity>
 					 : null}
+					 {/*
+						create ternary operator on this.props.passwordConfirm statement to render TouchableOpacity component (Forgot credentials button) with onPress prop that calls this.props.forgotCreds from UserRegister component if true and nothing if false
+						*/}
 				</View>
 				
 				{this.props.passwordConfirm ? this.props.children : null}
+				{/*
+						create ternary operator on this.props.passwordConfirm statement to render this.props.children (HoldsIntro component) if true and nothing if false
+						*/}
 				<View 
 				style = {buttonViewStyle}
 				>
+				{/*
+						create View Component with respective style prop to contain following components
+						*/}
 					<TouchableOpacity
 						onPress={()=>this.props.altButton()}
 						style = {touchableStyle}
@@ -90,6 +129,10 @@ class CredentialsInput extends Component{
 								spacing={5}
 								>
 								{this.props.title}
+
+								{/*
+						create TouchableOpacity and TextWithLetterSpacing component with this.props.title as button text with onPress prop that calls this.props.altButton from UserRegister component to toggle login or register
+						*/}
 								</TextWithLetterSpacing>	
 						</LinearGradient>
 					</TouchableOpacity>
@@ -106,6 +149,10 @@ class CredentialsInput extends Component{
 								spacing={5}
 								>
 								Submit
+
+								{/*
+						create TouchableOpacity component with submit as button text with onPress prop that calls this.props.handleSubmit with this.state as argument from UserRegister component to subimit login or register 
+						*/}
 								</TextWithLetterSpacing>
 						</LinearGradient>
 					</TouchableOpacity>
@@ -116,6 +163,7 @@ class CredentialsInput extends Component{
 }
 
 export default CredentialsInput;
+//exports component to be used outside this file
 
 const styles = StyleSheet.create({
 	viewStyle:{
@@ -163,3 +211,4 @@ const styles = StyleSheet.create({
 		width: '40%',
 	}
 })
+//Creates styles variable through StyleSheet.create to reduce the strain on the bridge

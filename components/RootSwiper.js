@@ -1,3 +1,6 @@
+//component formated with word wrap for compactness
+"use strict"
+// Defines that JavaScript code should be executed in "strict mode"
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -11,6 +14,7 @@ import RootFirstSwipe from './RootFirstSwipe';
 import RootSecondSwipe from './RootSecondSwipe';
 import RootThirdSwipe from './RootThirdSwipe';
 import RootFourthSwipe from './RootFourthSwipe';
+//Import all components, assests, and packages used on this file
 
 
 const styles = StyleSheet.create({
@@ -24,9 +28,12 @@ const styles = StyleSheet.create({
     // backgroundColor: "rgb(186, 188, 188)"
   }
 })
-
+//Creates styles variable through StyleSheet.create to reduce the strain on the bridge
 class RootSwiper extends Component {
+  //initialize component
+
   render(){
+    //Within render
 
     const {slide1} = styles;
     return (
@@ -44,6 +51,10 @@ class RootSwiper extends Component {
         </View>
          <View style={slide1}>
           <RootFourthSwipe />
+           {/*
+        create Swiper and respective crown components to finger swipe
+        through each component
+        */}
         </View>
       </Swiper>
     );

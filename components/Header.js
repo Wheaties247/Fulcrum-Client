@@ -1,13 +1,20 @@
+//component formated with word wrap for compactness
+"use strict"
+// Defines that JavaScript code should be executed in "strict mode"
 import React, { Component } from "react";
 import {Platform, Text, View , StyleSheet, Image, TouchableOpacity} from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import { TextWithLetterSpacing } from './TextWithLetterSpacing';
 import LocalImageHeader from "./LocalImageHeader";
+//Import all components, assests, and packages used on this file
 
 
 const Header = (props) =>{
+	// create function that returns components 
+
 		const { viewStyle, textStyle } = styles;
 		const {handlePress } = props
+    //deconstructs respective values from variables
 	return(
 		<TouchableOpacity
 		onPress = {handlePress}
@@ -20,12 +27,18 @@ const Header = (props) =>{
     		source={require('../images/FULCRUM_BASIC_LOGO.png')} 
     		originalWidth={6574}
 					originalHeight={3211}/>
+					{/* 
+    create TouchableOpacity, LocalImageHeader component with respective prop values;
+     when TouchableOpacity is clicked, handlePress prop is called from App component
+    */}
 			</LinearGradient>
 		</TouchableOpacity>
 		)
 };
 
 export default Header;
+//exports component to be used outside this file
+
 const styles = StyleSheet.create({
 	viewStyle:{
 		alignItems:'center',
@@ -47,11 +60,4 @@ const styles = StyleSheet.create({
 		color : 'white'	
 		}
 })
-// <TextWithLetterSpacing 
-// 				spacing = {25}
-// 				textStyle= {textStyle}
-// 				>
-// 				 Fulcrum
-//				</TextWithLetterSpacing>
-//underlayColor. Underlay color for button press (optional)
-//transparent: bool Makes the button transparent (optional)
+//Creates styles variable through StyleSheet.create to reduce the strain on the bridge
